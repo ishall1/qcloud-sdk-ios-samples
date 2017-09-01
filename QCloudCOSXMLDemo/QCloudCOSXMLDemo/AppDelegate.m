@@ -8,38 +8,58 @@
 
 #define CNNORTH_REGION
 #import "AppDelegate.h"
-#import <QCloudCOSXML/QCloudCOSXML.h>
-#import <QCloudCore/QCloudServiceConfiguration_Private.h>
-#import <QCloudCore/QCloudAuthentationCreator.h>
-#import <QCloudCore/QCloudCredential.h>
 #import <QCloudCore/QCloudCore.h>
+#import <QCloudCOSXML/QCloudCOSXML.h>
 
 
-@interface AppDelegate () <QCloudSignatureProvider>
+//#define  USE_TEMPERATE_SECRET
 
+@interface AppDelegate () <QCloudSignatureProvider, QCloudCredentailFenceQueueDelegate>
+@property (nonatomic, strong) QCloudCredentailFenceQueue* credentialFenceQueue;
 @end
 
 @implementation AppDelegate
 
+- (void) fenceQueue:(QCloudCredentailFenceQueue *)queue requestCreatorWithContinue:(QCloudCredentailFenceQueueContinue)continueBlock
+{
+   QCloudCredential* credential = [QCloudCredential new];
+   credential.secretID = @"****";
+   credential.secretKey = @"****";
+   credential.experationDate = [NSDate dateWithTimeIntervalSince1970:1504183628];
+   credential.token = @"****";
+   QCloudAuthentationV5Creator* creator = [[QCloudAuthentationV5Creator alloc] initWithCredential:credential];
+   continueBlock(creator, nil);
+}
+
 - (void) signatureWithFields:(QCloudSignatureFields*)fileds
                      request:(QCloudBizHTTPRequest*)request
-                  urlRequest:(NSURLRequest*)urlRequst
+                  urlRequest:(NSMutableURLRequest*)urlRequst
                    compelete:(QCloudHTTPAuthentationContinueBlock)continueBlock
 {
+#ifdef USE_TEMPERATE_SECRET
+    [self.credentialFenceQueue performAction:^(QCloudAuthentationCreator *creator, NSError *error) {
+        if (error) {
+            continueBlock(nil, error);
+        } else {
+            QCloudSignature* signature =  [creator signatureForData:urlRequst];
+            continueBlock(signature, nil);    
+        }
+    }];
+#else
     QCloudCredential* credential = [QCloudCredential new];
 #warning 输入您的SecretID 和 SecretKey, 或者在服务器端实现签名过程
-    credential.secretID = @"您的SecretID";
-    credential.secretKey = @"您的ScretKey";
-    
-    QCloudAuthentationCreator* creator = [[QCloudAuthentationCreator alloc] initWithCredential:credential];
-    QCloudSignature* signature =  [creator signatureForCOSXMLRequest:request];
+    credential.secretID = @"****";
+    credential.secretKey = @"****";
+    QCloudAuthentationV5Creator* creator = [[QCloudAuthentationV5Creator alloc] initWithCredential:credential];
+    QCloudSignature* signature =  [creator signatureForData:urlRequst];
     continueBlock(signature, nil);
+#endif
 }
 
 - (void) setupCOSXMLShareService {
     QCloudServiceConfiguration* configuration = [QCloudServiceConfiguration new];
 #warning 输入您的APPID
-    configuration.appID = @"您的APPID";
+    configuration.appID = @"****";
     configuration.signatureProvider = self;
     QCloudCOSXMLEndPoint* endpoint = [[QCloudCOSXMLEndPoint alloc] init];
 #warning 输入Bucket所在地域
@@ -52,6 +72,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     [self setupCOSXMLShareService];
+    self.credentialFenceQueue = [QCloudCredentailFenceQueue new];
+    self.credentialFenceQueue.delegate = self;
     return YES;
 }
 
