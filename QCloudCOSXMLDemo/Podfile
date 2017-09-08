@@ -1,11 +1,9 @@
 use_frameworks!
 
 target 'QCloudCOSXMLDemo' do
-#  pod 'QCloudCore','~>5.0.0'
-  pod 'QCloudCOSXML','~>5.0.0'
+  pod 'QCloudCOSXML'
 end
 
 target 'QCloudCOSXMLDemoTests' do
-#  pod 'QCloudCore','~>5.0.0'
-  pod 'QCloudCOSXML','~>5.0.0'
+  pod 'QCloudCOSXML'
 end
