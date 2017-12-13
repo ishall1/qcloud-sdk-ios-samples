@@ -139,7 +139,7 @@
         });
     }];
     
-    [[QCloudCOSTransferMangerService defaultCOSTRANSFERMANGER] UploadObject:upload];
+    [[QCloudCOSTransferMangerService defaultCOSTransferManager] UploadObject:upload];
 }
 
 

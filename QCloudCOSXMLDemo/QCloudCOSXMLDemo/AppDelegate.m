@@ -67,7 +67,7 @@
     configuration.endpoint = endpoint;
     
     [QCloudCOSXMLService registerDefaultCOSXMLWithConfiguration:configuration];
-    [QCloudCOSTransferMangerService registerDefaultCOSTransferMangerWithConfiguration:configuration];
+    [QCloudCOSTransferMangerService registerdefaultCOSTransferManagerWithConfiguration:configuration];
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
