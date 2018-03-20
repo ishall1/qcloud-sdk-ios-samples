@@ -1,0 +1,6 @@
+framework module TACStorage {
+  umbrella header "TACStorage-umbrella.h"
+
+  export *
+  module * { export * }
+}

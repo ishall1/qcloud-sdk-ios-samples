@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TACStorageDemoViewController">
+            <connections>
+                <outlet property="cancelDownloadButton" destination="808-us-Exn" id="Y9n-Kw-i80"/>
+                <outlet property="cancelUploadButton" destination="JBS-zH-xOu" id="YVW-Vu-Oww"/>
+                <outlet property="deleteButton" destination="dQ6-oM-lwq" id="IFk-Ib-Vuc"/>
+                <outlet property="downloadButton" destination="ypj-ey-OuB" id="bmO-KG-d4P"/>
+                <outlet property="downloadProgressView" destination="aoa-Tt-HGZ" id="iZf-Rs-3OC"/>
+                <outlet property="pauseDownloadButton" destination="6QF-ca-1la" id="73A-Cl-hOH"/>
+                <outlet property="pauseUploadButton" destination="6Uy-5D-21M" id="ZAD-pD-Jmb"/>
+                <outlet property="previewImageView" destination="xhB-h5-U5P" id="BiG-x5-ikH"/>
+                <outlet property="resumeDownloadButton" destination="pUP-HT-cK2" id="3m1-eB-Tey"/>
+                <outlet property="resumeUploadButton" destination="WsY-Yv-i2l" id="fPJ-Kz-QES"/>
+                <outlet property="uploadButton" destination="eAn-bS-qrp" id="qOW-rt-0ll"/>
+                <outlet property="uploadProgressView" destination="6KA-DL-1sX" id="D6q-hg-CaK"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xhB-h5-U5P">
+                    <rect key="frame" x="129" y="81" width="117" height="111"/>
+                    <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="xhB-h5-U5P" secondAttribute="height" multiplier="39:37" id="FI3-3M-z4z"/>
+                    </constraints>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eAn-bS-qrp">
+                    <rect key="frame" x="16" y="254" width="68" height="30"/>
+                    <state key="normal" title="上传"/>
+                    <connections>
+                        <action selector="beginUpload:" destination="-1" eventType="touchUpInside" id="2FW-lf-R8A"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Uy-5D-21M">
+                    <rect key="frame" x="111" y="254" width="68" height="30"/>
+                    <state key="normal" title="暂停"/>
+                    <connections>
+                        <action selector="pauseUpload:" destination="-1" eventType="touchUpInside" id="3H1-gT-iru"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JBS-zH-xOu">
+                    <rect key="frame" x="251" y="254" width="68" height="30"/>
+                    <state key="normal" title="取消"/>
+                    <connections>
+                        <action selector="cancelUpload:" destination="-1" eventType="touchUpInside" id="leQ-eJ-Xdz"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6QF-ca-1la">
+                    <rect key="frame" x="112" y="340" width="68" height="30"/>
+                    <state key="normal" title="暂停"/>
+                    <connections>
+                        <action selector="pauseDownload:" destination="-1" eventType="touchUpInside" id="27D-xb-BwU"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pUP-HT-cK2">
+                    <rect key="frame" x="199" y="340" width="68" height="30"/>
+                    <state key="normal" title="恢复"/>
+                    <connections>
+                        <action selector="resumeDownload:" destination="-1" eventType="touchUpInside" id="Rrd-V3-cUZ"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="808-us-Exn">
+                    <rect key="frame" x="284" y="340" width="68" height="30"/>
+                    <state key="normal" title="取消"/>
+                    <connections>
+                        <action selector="cancelDownload:" destination="-1" eventType="touchUpInside" id="GGv-mg-WmW"/>
+                    </connections>
+                </button>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oPv-Xw-ilS">
+                    <rect key="frame" x="16" y="245" width="343" height="1"/>
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="HGb-ai-NbA"/>
+                    </constraints>
+                </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="上传" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nq0-ns-pFr">
+                    <rect key="frame" x="16" y="216" width="35" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Uc0-VU-BFY">
+                    <rect key="frame" x="16" y="321" width="343" height="1"/>
+                    <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="psd-DY-4ph"/>
+                    </constraints>
+                </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="下载" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B7m-8m-0oP">
+                    <rect key="frame" x="16" y="292" width="35" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ypj-ey-OuB">
+                    <rect key="frame" x="16" y="340" width="68" height="30"/>
+                    <state key="normal" title="下载"/>
+                    <connections>
+                        <action selector="beginDownload:" destination="-1" eventType="touchUpInside" id="wpT-J9-Xdd"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dQ6-oM-lwq">
+                    <rect key="frame" x="16" y="427" width="68" height="30"/>
+                    <state key="normal" title="删除"/>
+                    <connections>
+                        <action selector="deleteObject:" destination="-1" eventType="touchUpInside" id="XxY-T7-tTu"/>
+                    </connections>
+                </button>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1w2-B3-EbI">
+                    <rect key="frame" x="16" y="411" width="343" height="1"/>
+                    <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="t4S-hH-9yc"/>
+                    </constraints>
+                </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="删除" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="56y-7V-O8R">
+                    <rect key="frame" x="16" y="382" width="35" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="6KA-DL-1sX">
+                    <rect key="frame" x="72" y="225" width="287" height="2"/>
+                </progressView>
+                <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="aoa-Tt-HGZ">
+                    <rect key="frame" x="72" y="391" width="287" height="2"/>
+                </progressView>
+                <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WsY-Yv-i2l">
+                    <rect key="frame" x="181" y="254" width="68" height="30"/>
+                    <state key="normal" title="恢复"/>
+                    <connections>
+                        <action selector="resumeUpload:" destination="-1" eventType="touchUpInside" id="Rbj-ax-To9"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="WsY-Yv-i2l" firstAttribute="height" secondItem="6Uy-5D-21M" secondAttribute="height" id="0wh-ZX-Oj6"/>
+                <constraint firstItem="JBS-zH-xOu" firstAttribute="leading" secondItem="WsY-Yv-i2l" secondAttribute="trailing" constant="2" id="16B-Xg-dGc"/>
+                <constraint firstItem="808-us-Exn" firstAttribute="width" secondItem="pUP-HT-cK2" secondAttribute="width" id="1U0-yJ-sTv"/>
+                <constraint firstItem="6KA-DL-1sX" firstAttribute="leading" secondItem="Nq0-ns-pFr" secondAttribute="trailing" constant="21" id="1yC-25-2UY"/>
+                <constraint firstItem="eAn-bS-qrp" firstAttribute="baseline" secondItem="JBS-zH-xOu" secondAttribute="baseline" id="31K-NE-t55"/>
+                <constraint firstItem="808-us-Exn" firstAttribute="leading" secondItem="pUP-HT-cK2" secondAttribute="trailing" constant="17" id="5A3-2a-LkE"/>
+                <constraint firstItem="1w2-B3-EbI" firstAttribute="leading" secondItem="oPv-Xw-ilS" secondAttribute="leading" id="7Rb-Rb-fYa"/>
+                <constraint firstItem="1w2-B3-EbI" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leadingMargin" id="7i0-Md-j1d"/>
+                <constraint firstAttribute="trailing" secondItem="Uc0-VU-BFY" secondAttribute="trailing" constant="16" id="8ty-GF-ehF"/>
+                <constraint firstItem="eAn-bS-qrp" firstAttribute="baseline" secondItem="6Uy-5D-21M" secondAttribute="baseline" id="9Dc-9s-Vi7"/>
+                <constraint firstItem="oPv-Xw-ilS" firstAttribute="top" secondItem="Nq0-ns-pFr" secondAttribute="bottom" constant="8" symbolic="YES" id="9Ii-FI-ydb"/>
+                <constraint firstAttribute="trailing" secondItem="6KA-DL-1sX" secondAttribute="trailing" constant="16" id="Ahq-cc-lTP"/>
+                <constraint firstAttribute="trailing" secondItem="JBS-zH-xOu" secondAttribute="trailing" constant="56" id="At0-b9-rjW"/>
+                <constraint firstItem="WsY-Yv-i2l" firstAttribute="width" secondItem="6Uy-5D-21M" secondAttribute="width" id="B5m-1b-16G"/>
+                <constraint firstItem="aoa-Tt-HGZ" firstAttribute="centerY" secondItem="56y-7V-O8R" secondAttribute="centerY" id="BFD-Pn-8vW"/>
+                <constraint firstItem="pUP-HT-cK2" firstAttribute="width" secondItem="6QF-ca-1la" secondAttribute="width" id="CuE-51-JML"/>
+                <constraint firstItem="xhB-h5-U5P" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="129" id="Ds0-zK-EOA"/>
+                <constraint firstItem="dQ6-oM-lwq" firstAttribute="height" secondItem="ypj-ey-OuB" secondAttribute="height" id="EJt-sj-Bom"/>
+                <constraint firstItem="JBS-zH-xOu" firstAttribute="height" secondItem="WsY-Yv-i2l" secondAttribute="height" id="KTG-yj-K1P"/>
+                <constraint firstItem="oPv-Xw-ilS" firstAttribute="top" secondItem="xhB-h5-U5P" secondAttribute="bottom" constant="53" id="Nff-ij-B1r"/>
+                <constraint firstItem="6KA-DL-1sX" firstAttribute="centerY" secondItem="Nq0-ns-pFr" secondAttribute="centerY" id="OLr-w9-Ap0"/>
+                <constraint firstItem="ypj-ey-OuB" firstAttribute="leading" secondItem="eAn-bS-qrp" secondAttribute="leading" id="P5V-cF-gcl"/>
+                <constraint firstItem="808-us-Exn" firstAttribute="height" secondItem="pUP-HT-cK2" secondAttribute="height" id="QHC-ss-aA0"/>
+                <constraint firstItem="6QF-ca-1la" firstAttribute="leading" secondItem="ypj-ey-OuB" secondAttribute="trailing" constant="28" id="QXt-WM-OwH"/>
+                <constraint firstItem="dQ6-oM-lwq" firstAttribute="top" secondItem="1w2-B3-EbI" secondAttribute="bottom" constant="15" id="RwR-kg-DW8"/>
+                <constraint firstItem="6QF-ca-1la" firstAttribute="width" secondItem="ypj-ey-OuB" secondAttribute="width" id="SEk-cY-IWe"/>
+                <constraint firstItem="6QF-ca-1la" firstAttribute="baseline" secondItem="ypj-ey-OuB" secondAttribute="baseline" id="SYL-uU-47s"/>
+                <constraint firstItem="1w2-B3-EbI" firstAttribute="leading" secondItem="56y-7V-O8R" secondAttribute="leading" id="U1o-fs-Gpk"/>
+                <constraint firstItem="eAn-bS-qrp" firstAttribute="top" secondItem="oPv-Xw-ilS" secondAttribute="bottom" constant="8" symbolic="YES" id="WVF-vG-hnb"/>
+                <constraint firstItem="dQ6-oM-lwq" firstAttribute="leading" secondItem="eAn-bS-qrp" secondAttribute="leading" id="Y2e-v8-NDc"/>
+                <constraint firstItem="xhB-h5-U5P" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="81" id="ZNW-Mm-3pm"/>
+                <constraint firstItem="6QF-ca-1la" firstAttribute="baseline" secondItem="808-us-Exn" secondAttribute="baseline" id="ZXP-A2-lGm"/>
+                <constraint firstItem="6Uy-5D-21M" firstAttribute="height" secondItem="eAn-bS-qrp" secondAttribute="height" id="aOc-8R-RM1"/>
+                <constraint firstItem="B7m-8m-0oP" firstAttribute="top" secondItem="eAn-bS-qrp" secondAttribute="bottom" constant="8" id="ah6-gO-wby"/>
+                <constraint firstItem="6Uy-5D-21M" firstAttribute="leading" secondItem="eAn-bS-qrp" secondAttribute="trailing" constant="27" id="b05-in-6OM"/>
+                <constraint firstItem="eAn-bS-qrp" firstAttribute="baseline" secondItem="WsY-Yv-i2l" secondAttribute="baseline" id="bcZ-aY-j3A"/>
+                <constraint firstItem="1w2-B3-EbI" firstAttribute="trailing" secondItem="Uc0-VU-BFY" secondAttribute="trailing" id="bkO-Hl-ba2"/>
+                <constraint firstItem="eAn-bS-qrp" firstAttribute="leading" secondItem="Nq0-ns-pFr" secondAttribute="leading" id="cJG-qR-s6n"/>
+                <constraint firstItem="1w2-B3-EbI" firstAttribute="top" secondItem="56y-7V-O8R" secondAttribute="bottom" constant="8" symbolic="YES" id="cVW-f9-fj6"/>
+                <constraint firstItem="pUP-HT-cK2" firstAttribute="height" secondItem="6QF-ca-1la" secondAttribute="height" id="cX4-G5-gCs"/>
+                <constraint firstItem="6QF-ca-1la" firstAttribute="height" secondItem="ypj-ey-OuB" secondAttribute="height" id="d8k-dR-T9k"/>
+                <constraint firstItem="xhB-h5-U5P" firstAttribute="centerX" secondItem="oPv-Xw-ilS" secondAttribute="centerX" id="daN-qW-htJ"/>
+                <constraint firstItem="1w2-B3-EbI" firstAttribute="leading" secondItem="Uc0-VU-BFY" secondAttribute="leading" id="eE3-wP-y86"/>
+                <constraint firstItem="Uc0-VU-BFY" firstAttribute="top" secondItem="B7m-8m-0oP" secondAttribute="bottom" constant="8" symbolic="YES" id="eNf-Dx-OYI"/>
+                <constraint firstItem="aoa-Tt-HGZ" firstAttribute="trailing" secondItem="6KA-DL-1sX" secondAttribute="trailing" id="hTd-Tg-0tN"/>
+                <constraint firstItem="xhB-h5-U5P" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="hw4-sF-i1Z"/>
+                <constraint firstItem="6QF-ca-1la" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="112" id="jYw-qR-bP4"/>
+                <constraint firstItem="ypj-ey-OuB" firstAttribute="height" secondItem="eAn-bS-qrp" secondAttribute="height" id="mdg-f9-e01"/>
+                <constraint firstItem="aoa-Tt-HGZ" firstAttribute="trailing" secondItem="1w2-B3-EbI" secondAttribute="trailing" id="nWL-Rw-xBM"/>
+                <constraint firstItem="1w2-B3-EbI" firstAttribute="leading" secondItem="Nq0-ns-pFr" secondAttribute="leading" id="oeZ-6F-XrE"/>
+                <constraint firstItem="1w2-B3-EbI" firstAttribute="leading" secondItem="B7m-8m-0oP" secondAttribute="leading" id="oy6-Ff-lSr"/>
+                <constraint firstItem="dQ6-oM-lwq" firstAttribute="leading" secondItem="ypj-ey-OuB" secondAttribute="leading" id="pyx-f6-dPB"/>
+                <constraint firstItem="pUP-HT-cK2" firstAttribute="leading" secondItem="6QF-ca-1la" secondAttribute="trailing" constant="19" id="soZ-x4-Vsb"/>
+                <constraint firstItem="aoa-Tt-HGZ" firstAttribute="leading" secondItem="56y-7V-O8R" secondAttribute="trailing" constant="21" id="t3o-9Z-PYA"/>
+                <constraint firstItem="6QF-ca-1la" firstAttribute="baseline" secondItem="pUP-HT-cK2" secondAttribute="baseline" id="tO5-Jx-RZY"/>
+                <constraint firstItem="6Uy-5D-21M" firstAttribute="width" secondItem="eAn-bS-qrp" secondAttribute="width" id="uBN-NV-vu7"/>
+                <constraint firstItem="ypj-ey-OuB" firstAttribute="width" secondItem="eAn-bS-qrp" secondAttribute="width" id="uzN-NR-NOm"/>
+                <constraint firstItem="ypj-ey-OuB" firstAttribute="top" secondItem="Uc0-VU-BFY" secondAttribute="bottom" constant="18" id="vzg-s0-cZI"/>
+                <constraint firstItem="56y-7V-O8R" firstAttribute="top" secondItem="ypj-ey-OuB" secondAttribute="bottom" constant="12" id="xVP-mX-bak"/>
+                <constraint firstItem="dQ6-oM-lwq" firstAttribute="width" secondItem="ypj-ey-OuB" secondAttribute="width" id="xjQ-8B-kP9"/>
+                <constraint firstItem="JBS-zH-xOu" firstAttribute="width" secondItem="WsY-Yv-i2l" secondAttribute="width" id="z4j-6i-Tzd"/>
+            </constraints>
+            <point key="canvasLocation" x="33.5" y="54.5"/>
+        </view>
+    </objects>
+</document>

@@ -1,0 +1,36 @@
+
+def libpod(name)
+  pod name, path:"../../Libs/#{name}"
+end
+
+def bizpod(name)
+  pod name, path:"../../BisnessComponents/ApplicationCloud/#{name}"
+end
+
+
+target 'TACSamples' do
+  use_frameworks!
+  libpod "QCloudCore"
+  bizpod 'TACCore'
+  bizpod 'TACCrash'
+  bizpod 'TACStorage'
+  bizpod 'TACMessaging'
+  bizpod 'TACPayment'
+  bizpod 'TACAuthorization'
+  bizpod 'TACSocialQQ'
+  bizpod 'TACAuthorizationQQ'
+  bizpod 'TACAuthorizationWechat'
+  bizpod 'TACSocialWechat'
+  bizpod 'TACPaymentPluginQQ'
+  bizpod 'TACPaymentPluginWechat'
+  bizpod 'TACLocation'
+
+  libpod 'AOPKit'
+  pod "QCloudCOSXML", path:"../../BisnessComponents/COSXML/QCloudCOSXML"
+  target 'TACSamplesTests' do
+    inherit! :search_paths
+  end
+  target 'TACSamplesUITests' do
+    inherit! :search_paths
+  end
+end

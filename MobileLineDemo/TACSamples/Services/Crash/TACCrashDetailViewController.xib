@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TACCrashDetailViewController">
+            <connections>
+                <outlet property="descriptionLabel" destination="8mr-q6-JJF" id="7m1-aa-l2f"/>
+                <outlet property="titleLabel" destination="ahh-0M-O2t" id="7vr-te-EAj"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="名称" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ahh-0M-O2t">
+                    <rect key="frame" x="20" y="30" width="335" height="21"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="21" id="gYE-QS-Y9l"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Crash细节" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8mr-q6-JJF">
+                    <rect key="frame" x="20" y="71" width="335" height="150"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="150" id="qc5-dv-KRy"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dSM-Rx-vCl">
+                    <rect key="frame" x="20" y="251" width="335" height="30"/>
+                    <color key="backgroundColor" red="1" green="0.35937256156502617" blue="0.31261462335283063" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    <state key="normal" title="CRASH">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="doCrash" destination="-1" eventType="touchUpInside" id="6Eb-op-2RN"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="ahh-0M-O2t" secondAttribute="trailing" constant="20" id="1Kw-Oo-lgi"/>
+                <constraint firstItem="8mr-q6-JJF" firstAttribute="leading" secondItem="ahh-0M-O2t" secondAttribute="leading" id="AEG-aL-4fo"/>
+                <constraint firstItem="8mr-q6-JJF" firstAttribute="trailing" secondItem="ahh-0M-O2t" secondAttribute="trailing" id="LaU-zI-iF7"/>
+                <constraint firstItem="dSM-Rx-vCl" firstAttribute="top" secondItem="8mr-q6-JJF" secondAttribute="bottom" constant="30" id="Qfh-ZA-S5m"/>
+                <constraint firstItem="dSM-Rx-vCl" firstAttribute="leading" secondItem="8mr-q6-JJF" secondAttribute="leading" id="URq-eI-xUB"/>
+                <constraint firstItem="dSM-Rx-vCl" firstAttribute="trailing" secondItem="8mr-q6-JJF" secondAttribute="trailing" id="VrA-w1-UqO"/>
+                <constraint firstItem="ahh-0M-O2t" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="kLE-9J-PGB"/>
+                <constraint firstItem="8mr-q6-JJF" firstAttribute="top" secondItem="ahh-0M-O2t" secondAttribute="bottom" constant="20" id="quY-33-cjs"/>
+                <constraint firstItem="ahh-0M-O2t" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="30" id="wgk-JP-UDN"/>
+            </constraints>
+        </view>
+    </objects>
+</document>

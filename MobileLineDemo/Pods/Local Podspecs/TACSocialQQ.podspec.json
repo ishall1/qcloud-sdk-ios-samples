@@ -1,0 +1,34 @@
+{
+  "name": "TACSocialQQ",
+  "version": "0.8.0",
+  "summary": "TACSocialQQ 腾讯云iOS-SDK组件",
+  "description": "TODO: Add long description of the pod here.aaa",
+  "homepage": "https://cloud.tencent.com/",
+  "license": "MIT",
+  "authors": {
+    "QCloudTerminalLab": "g_PDTC_storage_DEV_terminallab@tencent.com"
+  },
+  "source": {
+    "git": "http://git.code.oa.com/qcloud-terminal/TACSocialQQ.git",
+    "tag": "0.8.0"
+  },
+  "platforms": {
+    "ios": "8.0"
+  },
+  "source_files": [
+    "Pod/Classes/**/*",
+    "Pod/Frameworks/**/*.{h}"
+  ],
+  "vendored_frameworks": "Pod/Frameworks/TencentOpenAPI.framework",
+  "public_header_files": [
+    "Pod/Classes/**/*.{h}",
+    "Pod/Frameworks/**/*.{h}"
+  ],
+  "dependencies": {
+    "TACCore": [
+
+    ]
+  },
+  "preserve_paths": "Scripts/**/*",
+  "static_framework": true
+}

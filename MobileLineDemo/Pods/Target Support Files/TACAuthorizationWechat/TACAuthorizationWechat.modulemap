@@ -1,0 +1,6 @@
+framework module TACAuthorizationWechat {
+  umbrella header "TACAuthorizationWechat-umbrella.h"
+
+  export *
+  module * { export * }
+}

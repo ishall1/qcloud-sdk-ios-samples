@@ -1,0 +1,43 @@
+{
+  "name": "TACCore",
+  "version": "0.8.0",
+  "summary": "TACCore 腾讯云iOS-SDK组件",
+  "description": "TODO: Add long description of the pod here.aaa",
+  "homepage": "https://cloud.tencent.com/",
+  "license": "MIT",
+  "authors": {
+    "QCloudTerminalLab": "g_PDTC_storage_DEV_terminallab@tencent.com"
+  },
+  "source": {
+    "git": "http://git.code.oa.com/qcloud-terminal/TACCore.git",
+    "tag": "0.8.0"
+  },
+  "platforms": {
+    "ios": "8.0"
+  },
+  "source_files": [
+    "Pod/Classes/**/*",
+    "Pod/MTA/**/*.{h}"
+  ],
+  "vendored_libraries": "Pod/MTA/libmtasdk.a",
+  "libraries": [
+    "z",
+    "sqlite3"
+  ],
+  "frameworks": [
+    "CFNetwork",
+    "SystemConfiguration",
+    "CoreTelephony",
+    "Security"
+  ],
+  "dependencies": {
+    "QCloudCore": [
+
+    ],
+    "AOPKit": [
+
+    ]
+  },
+  "preserve_paths": "Scripts",
+  "static_framework": true
+}

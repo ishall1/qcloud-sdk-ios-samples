@@ -1,0 +1,21 @@
+{
+  "name": "AOPKit",
+  "version": "1.0.1",
+  "summary": "A short description of AOPKit.",
+  "homepage": "git.code.oa.com",
+  "license": "MIT",
+  "authors": {
+    "erichmzhang": "erichmzhang@tencent.com"
+  },
+  "platforms": {
+    "ios": "8.0"
+  },
+  "source": {
+    "git": "http://git.code.oa.com/qcloud-terminal/AOPKit.git",
+    "tag": "1.0.1"
+  },
+  "source_files": "Pod/**/*",
+  "exclude_files": "Classes/Exclude",
+  "requires_arc": true,
+  "static_framework": true
+}

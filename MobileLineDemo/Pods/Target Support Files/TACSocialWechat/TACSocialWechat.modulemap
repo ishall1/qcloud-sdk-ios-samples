@@ -1,0 +1,6 @@
+framework module TACSocialWechat {
+  umbrella header "TACSocialWechat-umbrella.h"
+
+  export *
+  module * { export * }
+}
