@@ -13,7 +13,8 @@ pod install
 然后打开对应的 xcworkspace 文件，即可运行我们的 Demo。    
 > 对于 MoblieLine 的 Demo, 还需要加入配置文件后运行，详细操作可以参考官网文档。
 # License
-腾讯云存储 SDK for iOS 以及 Demo 都通过 MIT License 发布
+腾讯云存储 SDK for iOS 以及 Demo 都通过 MIT License 发布。
+Tencent Cloud SDK for iOS and samples are released under the MIT license.
 ~~~
 Copyright (c) 2017 腾讯云
 
