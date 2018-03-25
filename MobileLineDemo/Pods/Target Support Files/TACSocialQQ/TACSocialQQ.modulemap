@@ -1,6 +1,0 @@
-framework module TACSocialQQ {
-  umbrella header "TACSocialQQ-umbrella.h"
-
-  export *
-  module * { export * }
-}

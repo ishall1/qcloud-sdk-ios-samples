@@ -179,7 +179,6 @@
 		8D8FC13CC9EA1DF1486AF52D /* Pods-TACSamplesTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TACSamplesTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TACSamplesTests/Pods-TACSamplesTests.release.xcconfig"; sourceTree = "<group>"; };
 		90A00E88A52BAD76CE80AA40 /* Pods_TACSamplesTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TACSamplesTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A18E59466975E15C5318D105 /* Pods-TACSamplesTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TACSamplesTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TACSamplesTests/Pods-TACSamplesTests.debug.xcconfig"; sourceTree = "<group>"; };
-		A887895320450F1000511D03 /* tac_services_configurations_unpackage.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = tac_services_configurations_unpackage.plist; path = "../../../../../../Downloads/tac_services_configurations_100009-11/tac_services_configurations_unpackage.plist"; sourceTree = "<group>"; };
 		A887895420450F1000511D03 /* tac_services_configurations.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = tac_services_configurations.plist; sourceTree = "<group>"; };
 		A8A4182A204441E400EA5E0F /* TACAnalyticsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TACAnalyticsTests.m; sourceTree = "<group>"; };
 		AFC3966107F4CE5125186B1F /* Pods_TACSamplesUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TACSamplesUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -407,7 +406,6 @@
 		1AB143EF1E601E0500830F93 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				A887895320450F1000511D03 /* tac_services_configurations_unpackage.plist */,
 				A887895420450F1000511D03 /* tac_services_configurations.plist */,
 				1A0BB76C1FEBA978002F18D4 /* tac_services_configurations_qq.plist */,
 				1A0BB76B1FEBA977002F18D4 /* tac_services_configurations_wechat.plist */,
@@ -660,9 +658,42 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-TACSamples/Pods-TACSamples-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/AOPKit/AOPKit.framework",
+				"${BUILT_PRODUCTS_DIR}/QCloudCOSXML/QCloudCOSXML.framework",
+				"${BUILT_PRODUCTS_DIR}/QCloudCore/QCloudCore.framework",
+				"${BUILT_PRODUCTS_DIR}/TACAuthorization/TACAuthorization.framework",
+				"${BUILT_PRODUCTS_DIR}/TACAuthorizationQQ/TACAuthorizationQQ.framework",
+				"${BUILT_PRODUCTS_DIR}/TACAuthorizationWechat/TACAuthorizationWechat.framework",
+				"${BUILT_PRODUCTS_DIR}/TACCore/TACCore.framework",
+				"${BUILT_PRODUCTS_DIR}/TACCrash/TACCrash.framework",
+				"${BUILT_PRODUCTS_DIR}/TACLocation/TACLocation.framework",
+				"${BUILT_PRODUCTS_DIR}/TACMessaging/TACMessaging.framework",
+				"${BUILT_PRODUCTS_DIR}/TACPayment/TACPayment.framework",
+				"${BUILT_PRODUCTS_DIR}/TACPaymentPluginQQ/TACPaymentPluginQQ.framework",
+				"${BUILT_PRODUCTS_DIR}/TACPaymentPluginWechat/TACPaymentPluginWechat.framework",
+				"${BUILT_PRODUCTS_DIR}/TACSocialQQ/TACSocialQQ.framework",
+				"${BUILT_PRODUCTS_DIR}/TACSocialWechat/TACSocialWechat.framework",
+				"${BUILT_PRODUCTS_DIR}/TACStorage/TACStorage.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AOPKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/QCloudCOSXML.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/QCloudCore.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TACAuthorization.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TACAuthorizationQQ.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TACAuthorizationWechat.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TACCore.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TACCrash.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TACLocation.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TACMessaging.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TACPayment.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TACPaymentPluginQQ.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TACPaymentPluginWechat.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TACSocialQQ.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TACSocialWechat.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TACStorage.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -693,9 +724,12 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-TACSamples/Pods-TACSamples-resources.sh",
+				"${PODS_CONFIGURATION_BUILD_DIR}/TACPayment/OpenMidas.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/OpenMidas.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;

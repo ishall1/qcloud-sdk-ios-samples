@@ -1,6 +1,0 @@
-framework module TACPaymentPluginWechat {
-  umbrella header "TACPaymentPluginWechat-umbrella.h"
-
-  export *
-  module * { export * }
-}

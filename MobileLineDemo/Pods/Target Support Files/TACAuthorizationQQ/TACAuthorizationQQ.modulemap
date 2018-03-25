@@ -1,6 +1,0 @@
-framework module TACAuthorizationQQ {
-  umbrella header "TACAuthorizationQQ-umbrella.h"
-
-  export *
-  module * { export * }
-}
