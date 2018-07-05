@@ -1,7 +1,8 @@
-# 腾讯云 存储SDK Demo for iOS 
+# 腾讯云 存储SDK Demo for iOS
 这里包含了腾讯云存储 SDK for iOS
 # Demo 列表
 当前的产品有
+- COS XML 开箱即用示例(OOTB-XML)
 - 基于 COS XML API 封装的 SDK （V5 SDK）
 - 基于 COS JSON API 封装的 SDK (V4 SDK, 不建议新接入用户使用，推荐使用V5的SDK)
 - 腾讯移动开发平台（MobileLine）
