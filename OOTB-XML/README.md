@@ -77,9 +77,12 @@ python3 main.py
 
 ### 配置客户端
 
-//todo:
-客户端的说明，需要修改的地方
+修改 QCloudCOSXMLDemo/QCloudCOSXMLDemo/TestCommonDefine.h 文件，填入 APPID 以及 前面部署好的可以获取临时密钥的地址，然后运行
 
+```
+pod install
+```
+以后，打开 QCloudCOSXMLDemo.xcworkspace 即可进入 demo 体验。
 ### 运行示例 Demo
 #### 查询 bucket 列表并创建 bucket
 
