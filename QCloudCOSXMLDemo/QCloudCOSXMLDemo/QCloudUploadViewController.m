@@ -6,14 +6,21 @@
 //  Copyright © 2017年 Tencent. All rights reserved.
 //
 
+#ifndef BUILD_FOR_TEST
+
 #import "QCloudUploadViewController.h"
 #import <QCloudCore/QCloudCore.h>
 #import <QCloudCOSXML/QCloudCOSXML.h>
 #import "QCloudCOSXMLContants.h"
+#import "TestCommonDefine.h"
+#import "NSObject+HTTPHeadersContainer.h"
+#import "NSURL+FileExtension.h"
+#import "QCloudCOSXMLConfiguration.h"
 @interface QCloudUploadViewController () <UINavigationControllerDelegate, UIImagePickerControllerDelegate>
 @property (nonatomic, strong) NSString* uploadTempFilePath;
-@property (nonatomic, strong) QCloudCOSXMLUploadObjectRequest* uploadRequest;
+@property (nonatomic, weak) QCloudCOSXMLUploadObjectRequest* uploadRequest;
 @property (nonatomic, strong) NSData* uploadResumeData;
+@property (nonatomic, copy) NSString* uploadBucket;
 @end
 
 @implementation QCloudUploadViewController
@@ -21,6 +28,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    UIBarButtonItem* rightItem = [[UIBarButtonItem alloc] initWithTitle:@"相册" style:UIBarButtonItemStylePlain target:self action:@selector(selectImage)];
+    self.title = @"上传";
+
+    self.tabBarController.navigationItem.rightBarButtonItems = @[rightItem];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -30,7 +41,7 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    [self.navigationItem setTitle:@"上传"];
+    [self.tabBarController.navigationItem setTitle:@"上传"];
     [self.progressView setProgress:0.0f animated:NO];
 }
 
@@ -75,7 +86,7 @@
     }
     QCloudCOSXMLUploadObjectRequest* upload = [QCloudCOSXMLUploadObjectRequest new];
     upload.body = [NSURL fileURLWithPath:self.uploadTempFilePath];
-    upload.bucket = QCloudUploadBukcet;
+    upload.bucket = self.uploadBucket;
     upload.object = [NSUUID UUID].UUIDString;
     [self uploadFileByRequest:upload];
 }
@@ -92,7 +103,14 @@
     }];
 }
 
+
+- (void)dealloc {
+    if (self.uploadRequest) {
+        [self.uploadRequest cancel];
+    }
+}
 - (IBAction) pasueUpload:(id)sender {
+    QCloudLogDebug(@"点击了暂停按钮");
     if (!self.uploadRequest) {
         [self showErrorMessage:@"不存在上传请求，无法暂停上传"];
         return;
@@ -121,13 +139,32 @@
     [self showErrorMessage:@"开始上传"];
     _uploadRequest = upload;
     __weak typeof(self) weakSelf = self;
+    NSDate* beforeUploadDate = [NSDate date];
+    unsigned long long fileSize = [(NSURL*)upload.body fileSizeInContent];
+    NSString* fileSizeDescription =  [(NSURL*)upload.body fileSizeWithUnit];
+    double fileSizeSmallerThan1024 = [(NSURL*)upload.body fileSizeSmallerThan1024];
+    NSString* fileSizeCount = [(NSURL*)upload.body fileSizeCount];
     [upload setFinishBlock:^(QCloudUploadObjectResult *result, NSError * error) {
         weakSelf.uploadRequest = nil;
         dispatch_async(dispatch_get_main_queue(), ^{
             if (error) {
                 [weakSelf showErrorMessage:error.localizedDescription];
             } else {
-                [weakSelf showErrorMessage:[result qcloud_modelToJSONString]];
+                NSDate* afterUploadDate = [NSDate date];
+                NSTimeInterval uploadTime = [afterUploadDate timeIntervalSinceDate:beforeUploadDate];
+                NSMutableString* resultImformationString = [[NSMutableString alloc] init];
+                [resultImformationString appendFormat:@"上传耗时:%.1f 秒\n\n",uploadTime];
+                [resultImformationString appendFormat:@"文件大小: %@\n\n",fileSizeDescription];
+                [resultImformationString appendFormat:@"上传速度:%.2f %@/s\n\n",fileSizeSmallerThan1024/uploadTime,fileSizeCount];
+                [resultImformationString appendFormat:@"下载链接:%@\n\n",result.location];
+                if (result.__originHTTPURLResponse__) {
+                    [resultImformationString appendFormat:@"返回HTTP头部:\n%@\n",result.__originHTTPURLResponse__.allHeaderFields];
+                }
+                
+                if (result.__originHTTPResponseData__) {
+                    [resultImformationString appendFormat:@"返回HTTP Body内容:\n%@\n",[[NSString alloc] initWithData:result.__originHTTPResponseData__ encoding:NSUTF8StringEncoding]];
+                }
+                [self showErrorMessage:resultImformationString];
             }
         });
     }];
@@ -139,9 +176,10 @@
         });
     }];
     
-    [[QCloudCOSTransferMangerService defaultCOSTransferManager] UploadObject:upload];
-}
+//    [[QCloudCOSTransferMangerService defaultCOSTransferManager] UploadObject:upload];
 
+    [[QCloudCOSXMLConfiguration sharedInstance].currentTransferManager UploadObject:upload];
+}
 
 /*
 #pragma mark - Navigation
@@ -152,5 +190,8 @@
     // Pass the selected object to the new view controller.
 }
 */
-
+- (NSString *)uploadBucket {
+    return [QCloudCOSXMLConfiguration sharedInstance].currentBucket;
+}
 @end
+#endif

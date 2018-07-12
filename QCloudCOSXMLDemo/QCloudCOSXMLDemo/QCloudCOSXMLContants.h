@@ -9,6 +9,6 @@
 #ifndef QCloudCOSXMLContants_h
 #define QCloudCOSXMLContants_h
 
-#define QCloudUploadBukcet @"tjtest"
+#define QCloudUploadBukcet @"bucketcanbedelete120"
 
 #endif /* QCloudCOSXMLContants_h */

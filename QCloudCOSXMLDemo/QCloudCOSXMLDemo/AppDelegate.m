@@ -6,11 +6,12 @@
 //  Copyright © 2017年 Tencent. All rights reserved.
 //
 
-#define CNNORTH_REGION
 #import "AppDelegate.h"
-#import <QCloudCore/QCloudCore.h>
+#import "QCloudCore.h"
 #import <QCloudCOSXML/QCloudCOSXML.h>
-
+#import "TestCommonDefine.h"
+#import "QCloudCOSXMLVersion.h"
+#import "TestCommonDefine.h"
 
 //#define  USE_TEMPERATE_SECRET
 
@@ -18,19 +19,23 @@
 @property (nonatomic, strong) QCloudCredentailFenceQueue* credentialFenceQueue;
 @end
 
+@interface AppDelegate () <QCloudSignatureProvider>
+
+@end
+
+
 @implementation AppDelegate
 
 - (void) fenceQueue:(QCloudCredentailFenceQueue *)queue requestCreatorWithContinue:(QCloudCredentailFenceQueueContinue)continueBlock
 {
    QCloudCredential* credential = [QCloudCredential new];
-   credential.secretID = @"****";
-   credential.secretKey = @"****";
+   credential.secretID = @"AKIDzmJdhV8JJ3WjgMt0xhBPO8crrdASpJsC";
+   credential.secretKey = @"EF2dz7EG4e070e4FBtNbdQyGITRBi04t";
    credential.experationDate = [NSDate dateWithTimeIntervalSince1970:1504183628];
-   credential.token = @"****";
+   credential.token = @"1a395739a96b3b8be9af42481c87792430532ee03";
    QCloudAuthentationV5Creator* creator = [[QCloudAuthentationV5Creator alloc] initWithCredential:credential];
    continueBlock(creator, nil);
 }
-
 - (void) signatureWithFields:(QCloudSignatureFields*)fileds
                      request:(QCloudBizHTTPRequest*)request
                   urlRequest:(NSMutableURLRequest*)urlRequst
@@ -47,9 +52,8 @@
     }];
 #else
     QCloudCredential* credential = [QCloudCredential new];
-#warning 输入您的SecretID 和 SecretKey, 或者在服务器端实现签名过程
-    credential.secretID = @"****";
-    credential.secretKey = @"****";
+    credential.secretID  = kSecretID;
+    credential.secretKey = kSecretKey;
     QCloudAuthentationV5Creator* creator = [[QCloudAuthentationV5Creator alloc] initWithCredential:credential];
     QCloudSignature* signature =  [creator signatureForData:urlRequst];
     continueBlock(signature, nil);
@@ -58,16 +62,14 @@
 
 - (void) setupCOSXMLShareService {
     QCloudServiceConfiguration* configuration = [QCloudServiceConfiguration new];
-#warning 输入您的APPID
-    configuration.appID = @"****";
+    configuration.appID = kAppID;
     configuration.signatureProvider = self;
     QCloudCOSXMLEndPoint* endpoint = [[QCloudCOSXMLEndPoint alloc] init];
-#warning 输入Bucket所在地域
-    endpoint.regionName = @"cn-north";
+    endpoint.regionName = kRegion;
     configuration.endpoint = endpoint;
     
     [QCloudCOSXMLService registerDefaultCOSXMLWithConfiguration:configuration];
-    [QCloudCOSTransferMangerService registerdefaultCOSTransferManagerWithConfiguration:configuration];
+    [QCloudCOSTransferMangerService registerDefaultCOSTransferMangerWithConfiguration:configuration];
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
