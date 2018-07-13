@@ -60,8 +60,8 @@
                    compelete:(QCloudHTTPAuthentationContinueBlock)continueBlock
 {
     QCloudCredential* credential = [QCloudCredential new];
-    credential.secretID = @"AKIDPiqmW3qcgXVSKN8jngPzRhvxzYyDL5qP";
-    credential.secretKey = @"EH8oHoLgpmJmBQUM1Uoywjmv7EFzd5OJ";
+    credential.secretID = kSecretID;
+    credential.secretKey = kSecretKey;
     QCloudAuthentationV5Creator* creator = [[QCloudAuthentationV5Creator alloc] initWithCredential:credential];
     QCloudSignature* signature =  [creator signatureForData:urlRequst];
     continueBlock(signature, nil);
@@ -93,6 +93,7 @@
     
     [QCloudCOSTransferMangerService registerCOSTransferMangerWithConfiguration:configuration withKey:kHTTPServiceKey];
     [QCloudCOSXMLService registerCOSXMLWithConfiguration:configuration withKey:kHTTPServiceKey];
+    
 }
 
 - (void) testRegisterCustomManagerService
